@@ -1,14 +1,11 @@
-from .ingredients import ingredients_manager
+from .base import ingredients_manager, Ingredient, FreezingPointDepressant, Flavor, MeltingRateModifier, Colorant, SweetenerProps
 from .milks import *
 from .sugars import *
 from .stabilizers import *
 from .fats_and_oils import *
 from .water import *
-from .flavor import *
-from .color import *
-from .viscosity import *
-from .melting_rate import *
-from .ph import *
-from .emulsification import *
-from .sweetness import *
-from .gum_agent import *
+from .ph_buffers import *
+from .emulsifiers import *
+from .melting_rate_modifiers import *
+from .colorants import *
+
