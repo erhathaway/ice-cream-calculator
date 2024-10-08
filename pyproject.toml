@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "ice-cream-calculator"
+version = "0.1.0"
+description = "Calculate ideal ingredient ratios based on different recipes"
+authors = ["Ethan Hathaway <erhathaway@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
