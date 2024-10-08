@@ -63,3 +63,20 @@ ingredients_manager.add(Ingredient(
         ideal_usage=10.0
     ),
 ))
+
+# Add Sugar (Sucrose)
+ingredients_manager.add(Ingredient(
+    name='Sugar',
+    category='Sugar',
+    carbs=100.0,
+    sweetness=1.0,
+    fpdf=FreezingPointDepressant(fpdf=1.0),
+    melting_rate_modifier=MeltingRateModifier(melting_rate_effect=1.0),
+    flavor_profiles=Flavor(flavor_notes=['Sweet']),
+    colorant=Colorant(color='White', natural=True),
+    sweetener_props=SweetenerProperties(
+        glycemic_index=65.0,
+        relative_sweetness=1.0,
+        ideal_usage=15.0
+    ),
+))
