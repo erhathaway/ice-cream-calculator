@@ -14,6 +14,7 @@ ingredients_manager.add(Ingredient(
     weight=20.0,  # Adjust as needed
     calories=230.0,  # per 100g
     sweetness=0.1,
+    density=0.96,  # Approximate density in g/ml
     emulsifier_props=EmulsifierProps(
         emulsification=0.2
     ),

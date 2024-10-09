@@ -40,3 +40,5 @@ class Recipe:
 
     def validate_mix(self):
         raise NotImplementedError("This method should be implemented by subclasses")
+    
+    

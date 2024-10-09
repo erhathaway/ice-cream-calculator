@@ -1,6 +1,5 @@
 from recipes.ice_cream import IceCreamRecipe, Constraints
-from ingredients.base import get_ingredient_with_weight
-
+from ingredients.base import ingredients_manager
 # Initialize the ice cream recipe
 ice_cream_recipe = IceCreamRecipe(total_weight=1000)
 
@@ -13,14 +12,20 @@ constraints.add_constraint("Gum Agent", "total_gum_agent", 0.15, 0.05)
 constraints.add_constraint("Sweetener", "total_sweetener", 15.0, 1.0)
 
 ice_cream_recipe.constraints = constraints
+im = ingredients_manager
+# Add ingredients with specified weights and units
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('Coconut Milk', 300, 'g'))
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('White Sugar', 150, 'g'))
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('Vegetable Oil', 50, 'g'))
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('Water', 400, 'g'))
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('Xanthan Gum', 5, 'g'))
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('Locust Bean Gum', 5, 'g'))
 
-# Add ingredients with specified weights
-ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Coconut Milk', 300))
-ice_cream_recipe.add_ingredient(get_ingredient_with_weight('White Sugar', 150))
-ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Vegetable Oil', 50))
-ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Water', 400))
-ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Xanthan Gum', 5))
-ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Locust Bean Gum', 5))
+# Using cups and tablespoons
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('Coconut Milk', 1.25, 'cup'))
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('White Sugar', 8, 'tbsp'))
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('Vegetable Oil', 1, 'oz'))
+ice_cream_recipe.add_ingredient(im.get_ingredient_with_weight('Water', 200, 'ml'))
 
 # Adjust ingredient weights to match total desired weight
 ice_cream_recipe.adjust_ingredient_weights()

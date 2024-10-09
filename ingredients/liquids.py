@@ -13,4 +13,5 @@ ingredients_manager.add(Ingredient(
     calories=0.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     colorant=Colorant(color='Colorless', natural=True),
+    density=1.0,  # g/ml
 ))

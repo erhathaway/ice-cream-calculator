@@ -84,14 +84,14 @@ class RheologicalProperties:
 class Ingredient:
     name: str
     category: List[str]
-    fat: float   = 0.0         # in grams
-    carbs: float = 0.0          # in grams
-    protein: float = 0.0        # in grams
-    weight: float = 0.0         # in grams
-    calories: float = 0.0 # in kcal
-    fiber: float = 0.0    # in grams
-    vitamins: Dict[str, float] = field(default_factory=dict) # {'Vitamin C': 60.0}
-    minerals: Dict[str, float] = field(default_factory=dict) # {'Calcium': 100.0}
+    fat: float = 0.0        # in grams per 100g
+    carbs: float = 0.0      # in grams per 100g
+    protein: float = 0.0    # in grams per 100g
+    weight: float = 0.0     # in grams
+    calories: float = 0.0   # in kcal per 100g
+    fiber: float = 0.0      # in grams per 100g
+    vitamins: Dict[str, float] = field(default_factory=dict)
+    minerals: Dict[str, float] = field(default_factory=dict)
     sweetness: float = 0.0
 
     # Functional properties
@@ -133,6 +133,8 @@ class Ingredient:
         return max(0.0, adjusted_shelf_life - days_since_manufacture)
 
     rheological_properties: Optional[RheologicalProperties] = None
+
+    density: Optional[float] = None  # Density in g/ml, required for volume to weight conversion
 
 # Class to manage a collection of ingredients
 class Ingredients:
@@ -238,18 +240,73 @@ class Ingredients:
             return 0.0
         return total_viscosity / total_weight
 
-    def get_ingredient_by_name(self, name: str) -> Optional[Ingredient]:
+    def get_ingredient_by_name(self, name: str) -> Ingredient:
         for ingredient in self.ingredients:
-            if ingredient.name == name:
+            if ingredient.name.lower() == name.lower():
                 return ingredient
-        raise ValueError(f"Ingredient {name} not found")
-        return None
+        raise ValueError(f"Ingredient '{name}' not found")
 
+
+    def get_ingredient_with_weight(self, name: str, amount: float, unit: str) -> Ingredient:
+        if not unit:
+            print(f"Error with params {name}, {amount}, {unit}")
+            print(f"Unit is required for get_ingredient_with_weight. Using default unit 'g'.")
+            raise ValueError("Unit is required for get_ingredient_with_weight")
+        ingredient = self.get_ingredient_by_name(name)
+        weight_in_grams = convert_to_grams(amount, unit, density=ingredient.density)
+        ing_copy = deepcopy(ingredient)
+        ing_copy.weight = weight_in_grams
+        return ing_copy
+    
 # Initialize Ingredients manager
 ingredients_manager = Ingredients()
 
-def get_ingredient_with_weight(name: str, weight: float) -> Ingredient:
-    ingredient = ingredients_manager.get_ingredient_by_name(name)
-    ingredient_copy = deepcopy(ingredient)
-    ingredient_copy.weight = weight
-    return ingredient_copy
+
+def convert_to_grams(amount: float, unit: str, density: Optional[float] = None) -> float:
+    """
+    Converts the given amount and unit to grams.
+    If unit is a weight unit, converts directly.
+    If unit is a volume unit, uses density to convert.
+    """
+    unit = unit.lower()
+    weight_units = {
+        'g': 1.0,
+        'gram': 1.0,
+        'grams': 1.0,
+        'kg': 1000.0,
+        'kilogram': 1000.0,
+        'kilograms': 1000.0,
+        'oz': 28.3495,
+        'ounce': 28.3495,
+        'ounces': 28.3495,
+        'lb': 453.592,
+        'pound': 453.592,
+        'pounds': 453.592,
+    }
+    volume_units_ml = {
+        'ml': 1.0,
+        'milliliter': 1.0,
+        'milliliters': 1.0,
+        'l': 1000.0,
+        'liter': 1000.0,
+        'liters': 1000.0,
+        'tsp': 4.92892,
+        'teaspoon': 4.92892,
+        'teaspoons': 4.92892,
+        'tbsp': 14.7868,
+        'tablespoon': 14.7868,
+        'tablespoons': 14.7868,
+        'cup': 240.0,
+        'cups': 240.0,
+    }
+
+    if unit in weight_units:
+        return amount * weight_units[unit]
+    elif unit in volume_units_ml:
+        if density is None:
+            print(f"Error with params {density}, {amount}, {unit}")
+            raise ValueError(f"Density is required to convert volume unit '{unit}' to grams")
+        volume_in_ml = amount * volume_units_ml[unit]
+        return volume_in_ml * density  # grams = volume (ml) * density (g/ml)
+    else:
+        raise ValueError(f"Unknown unit '{unit}'")
