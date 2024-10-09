@@ -1,12 +1,14 @@
 from dataclasses import dataclass, field
 from typing import List, Dict
 
+from ingredients import Ingredient
+
 @dataclass
 class Recipe:
     total_weight: float = 1000.0
-    ingredients: List['Ingredient'] = field(default_factory=list)
+    ingredients: List[Ingredient] = field(default_factory=list)
 
-    def add_ingredient(self, ingredient: 'Ingredient'):
+    def add_ingredient(self, ingredient: Ingredient):
         self.ingredients.append(ingredient)
 
     def calculate_totals(self) -> Dict[str, float]:

@@ -1,6 +1,7 @@
 from .base import (
     ingredients_manager, Ingredient, Flavor, Colorant,
-    FreezingPointDepressant, MeltingRateModifier
+    FreezingPointDepressant, MeltingRateModifier, PHModifier,
+    PHBuffer
 )
 
 # Additives
@@ -32,5 +33,34 @@ ingredients_manager.add(Ingredient(
     fpdf=FreezingPointDepressant(fpdf=1.92),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.8),
     flavor_profiles=Flavor(flavor_notes={'Sweet': 1.0}),
+    colorant=Colorant(color='Colorless', natural=False),
+))
+
+# Citric Acid
+ingredients_manager.add(Ingredient(
+    name='Citric Acid',
+    category=['Additive', 'Acidulant'],
+    fat=0.0,
+    carbs=0.0,
+    protein=0.0,
+    weight=0.0,
+    calories=0.0,
+    ph_modifier=PHModifier(ph_change=-2.5),
+    flavor_profiles=Flavor(flavor_notes={'Sour': 1.0}),
+    colorant=Colorant(color='Colorless', natural=True),
+))
+
+# Sodium Citrate
+ingredients_manager.add(Ingredient(
+    name='Sodium Citrate',
+    category=['Additive', 'Emulsifier', 'Buffering Agent'],
+    fat=0.0,
+    carbs=0.0,
+    protein=0.0,
+    weight=0.0,
+    calories=0.0,
+    ph_modifier=PHModifier(ph_change=-1.0),
+    ph_buffer=PHBuffer(buffering_capacity=1.5),
+    flavor_profiles=Flavor(flavor_notes={'Salty': 0.2}),
     colorant=Colorant(color='Colorless', natural=False),
 ))
