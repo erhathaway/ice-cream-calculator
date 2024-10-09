@@ -154,7 +154,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=100.0,
     protein=0.0,
-    weight=0.0,
+    weight=10.0,
     calories=387.0,
     sweetness=1.0,
     sweetener_props=SweetenerProps(glycemic_index=65.0, relative_sweetness=1.0, ideal_usage=10.0),

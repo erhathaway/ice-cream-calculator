@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Dict
+from copy import deepcopy
 
 # Functional property classes
 @dataclass
@@ -141,6 +142,11 @@ class Ingredients:
     def add(self, ingredient: Ingredient):
         self.ingredients.append(ingredient)
 
+    def add_with_weight(self, ingredient: Ingredient, weight: float):
+        ing_copy = deepcopy(ingredient)
+        ing_copy.weight = weight
+        self.ingredients.append(ing_copy)
+
     def list_all(self) -> List[str]:
         return [ingredient.name for ingredient in self.ingredients]
 
@@ -241,3 +247,9 @@ class Ingredients:
 
 # Initialize Ingredients manager
 ingredients_manager = Ingredients()
+
+def get_ingredient_with_weight(name: str, weight: float) -> Ingredient:
+    ingredient = ingredients_manager.get_ingredient_by_name(name)
+    ingredient_copy = deepcopy(ingredient)
+    ingredient_copy.weight = weight
+    return ingredient_copy

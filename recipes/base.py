@@ -1,7 +1,8 @@
+from copy import deepcopy
 from dataclasses import dataclass, field
 from typing import List, Dict
 
-from ingredients import Ingredient
+from ingredients.base import Ingredient
 
 @dataclass
 class Recipe:
@@ -10,6 +11,11 @@ class Recipe:
 
     def add_ingredient(self, ingredient: Ingredient):
         self.ingredients.append(ingredient)
+
+    def add_ingredient_with_weight(self, ingredient: Ingredient, weight: float):
+        ing_copy = deepcopy(ingredient)
+        ing_copy.weight = weight
+        self.ingredients.append(ing_copy)
 
     def calculate_totals(self) -> Dict[str, float]:
         totals = {

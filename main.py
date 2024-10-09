@@ -1,5 +1,5 @@
 from recipes.ice_cream import IceCreamRecipe, Constraints
-from ingredients import ingredients_manager
+from ingredients.base import get_ingredient_with_weight
 
 # Initialize the ice cream recipe
 ice_cream_recipe = IceCreamRecipe(total_weight=1000)
@@ -14,23 +14,14 @@ constraints.add_constraint("Sweetener", "total_sweetener", 15.0, 1.0)
 
 ice_cream_recipe.constraints = constraints
 
-# Retrieve ingredients by name
-coconut_milk = ingredients_manager.get_ingredient_by_name('Coconut Milk')
-sugar = ingredients_manager.get_ingredient_by_name('White Sugar')
-oil = ingredients_manager.get_ingredient_by_name('Vegetable Oil')
-water = ingredients_manager.get_ingredient_by_name('Water')
-xanthan_gum = ingredients_manager.get_ingredient_by_name('Xanthan Gum')
-locust_bean_gum = ingredients_manager.get_ingredient_by_name('Locust Bean Gum')
+# Add ingredients with specified weights
+ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Coconut Milk', 300))
+ice_cream_recipe.add_ingredient(get_ingredient_with_weight('White Sugar', 150))
+ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Vegetable Oil', 50))
+ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Water', 400))
+ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Xanthan Gum', 5))
+ice_cream_recipe.add_ingredient(get_ingredient_with_weight('Locust Bean Gum', 5))
 
-# Add ingredients to the recipe
-for ingredient in [coconut_milk, sugar, oil, water, xanthan_gum, locust_bean_gum]:
-    if ingredient is not None:
-        ice_cream_recipe.add_ingredient(ingredient)
-    else:
-        print(f"Ingredient not found: {ingredient}")    
-
-print("\nIngredients:")
-print([ing.name for ing in ice_cream_recipe.ingredients])
 # Adjust ingredient weights to match total desired weight
 ice_cream_recipe.adjust_ingredient_weights()
 

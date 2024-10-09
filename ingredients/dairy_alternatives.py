@@ -11,7 +11,7 @@ ingredients_manager.add(Ingredient(
     fat=24.0,
     carbs=6.0,
     protein=2.0,
-    weight=0.0,  # Adjust as needed
+    weight=20.0,  # Adjust as needed
     calories=230.0,  # per 100g
     sweetness=0.1,
     emulsifier_props=EmulsifierProps(
