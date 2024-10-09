@@ -32,11 +32,69 @@ for ing in all_ingredients:
 categories = sorted(list(categories))
 
 st.subheader("Select Ingredients")
-selected_categories = st.multiselect('Filter ingredients by category', categories)
+
+
+# Create filter header. Make it a h7
+st.markdown("##### Category Filter")
+
+# Create a container for category tags
+category_container = st.container()
+
+# Custom CSS for category tags
+st.markdown("""
+<style>
+.stButton > button {
+    color: #4F8BF9;
+    border-color: #4F8BF9;
+    background-color: white;
+    margin: 2px;
+    width: 150px !important;
+    height: auto !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    padding: 0.5rem !important;
+}
+.stButton > button:hover {
+    color: white;
+    border-color: #4F8BF9;
+    background-color: #4F8BF9;
+}
+.selected {
+    color: white !important;
+    border-color: #4F8BF9 !important;
+    background-color: black !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# Initialize session state for selected categories if not exists
+if 'selected_categories' not in st.session_state:
+    st.session_state.selected_categories = set()
+
+# Create category tags
+with category_container:
+    cols = st.columns(4)  # Adjust the number of columns as needed
+    for i, category in enumerate(categories):
+        col = cols[i % 4]
+        if col.button(category, key=f"cat_{category}"):
+            if category in st.session_state.selected_categories:
+                st.session_state.selected_categories.remove(category)
+            else:
+                st.session_state.selected_categories.add(category)
+
+# Update button styles based on selection
+for category in categories:
+    if category in st.session_state.selected_categories:
+        st.markdown(f"""
+        <script>
+        var button = document.querySelector('button[kind="secondary"][data-baseweb="button"]:contains("{category}")');
+        if (button) button.classList.add('selected');
+        </script>
+        """, unsafe_allow_html=True)
 
 # Filter ingredients based on selected categories
-if selected_categories:
-    filtered_ingredients = [ing for ing in all_ingredients if any(cat in ing.category for cat in selected_categories)]
+if st.session_state.selected_categories:
+    filtered_ingredients = [ing for ing in all_ingredients if any(cat in ing.category for cat in st.session_state.selected_categories)]
 else:
     filtered_ingredients = all_ingredients
 
