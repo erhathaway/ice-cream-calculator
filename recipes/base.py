@@ -22,11 +22,16 @@ class Recipe:
             'total_fat': 0.0,
             'total_carbs': 0.0,
             'total_protein': 0.0,
-            'total_weight': 0.0
-        }
+            'total_weight': 0.0,
+            'total_calories': 0.0,
+            'total_fiber': 0.0,
+                    }
         for ing in self.ingredients:
-            for nutrient in ['fat', 'carbs', 'protein']:
-                totals[f'total_{nutrient}'] += getattr(ing, nutrient) * ing.weight / 100
+            for nutrient in ['fat', 'carbs', 'protein', 'calories', 'fiber']:
+                if hasattr(ing, nutrient): 
+                    totals[f'total_{nutrient}'] += getattr(ing, nutrient) * ing.weight / 100
+                else:
+                    print(f"Warning: {nutrient} attribute not found for {ing.name}")
             totals['total_weight'] += ing.weight
         return totals
 
@@ -34,7 +39,11 @@ class Recipe:
         total_current_weight = sum(ing.weight for ing in self.ingredients)
         if total_current_weight == 0:
             return
+        print(f"Total weight: {self.total_weight}") 
+        print("/")
+        print(f"Total current weight: {total_current_weight}")
         scaling_factor = self.total_weight / total_current_weight
+        print(f"Scaling factor: {scaling_factor}")
         for ing in self.ingredients:
             ing.weight *= scaling_factor
 

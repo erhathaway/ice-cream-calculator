@@ -41,3 +41,10 @@ validations = ice_cream_recipe.validate_mix()
 print("\nValidation Results:")
 for key, value in validations.items():
     print(f"{key}: {value}")
+
+# Recommend adjustments
+recommendations = ice_cream_recipe.recommend_adjustments()
+print("\nRecommendations:")
+for key, value in recommendations.items():
+    print(f"{key}: {value:.2f}")
+
