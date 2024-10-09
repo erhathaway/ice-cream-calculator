@@ -10,8 +10,8 @@ ingredients_manager.add(Ingredient(
     fat=3.25,
     carbs=4.8,
     protein=3.15,
-    weight=0.0,  # Adjust as needed
-    calories=60.0,  # per 100g
+    weight=0.0,
+    calories=60.0,
     sweetness=0.1,
     fpdf=FreezingPointDepressant(fpdf=0.5),
     flavor_profiles=Flavor(flavor_notes={'Creamy': 1.0, 'Slightly Sweet': 0.5}),
@@ -21,6 +21,7 @@ ingredients_manager.add(Ingredient(
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=1.0),
     colorant=Colorant(color='White', natural=True),
     emulsifier_props=EmulsifierProps(
-        emulsification=0.2,  # Moved emulsification here
+        emulsification=0.2,
     ),
+    density=1.03,  # Density in g/ml
 ))

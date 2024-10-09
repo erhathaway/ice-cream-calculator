@@ -11,6 +11,7 @@ ingredients_manager.add(Ingredient(
     protein=0.0,
     weight=0.0,
     colorant=Colorant(color='Orange', natural=True),
+    density=0.7,
 ))
 
 # Beet Juice
@@ -22,4 +23,5 @@ ingredients_manager.add(Ingredient(
     protein=1.0,
     weight=0.0,
     colorant=Colorant(color='Red', natural=True),
+    density=1.05,
 ))

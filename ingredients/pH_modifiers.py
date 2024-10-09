@@ -15,6 +15,7 @@ ingredients_manager.add(Ingredient(
     flavor_profiles=Flavor(flavor_notes={'Slightly Salty': 1.0}),
     ph_buffer=PHBuffer(buffering_capacity=1.0),
     colorant=Colorant(color='White', natural=True),
+    density=0.81,
 ))
 
 # Citric Acid
@@ -29,6 +30,7 @@ ingredients_manager.add(Ingredient(
     ph_buffer=PHBuffer(buffering_capacity=0.8),
     flavor_profiles=Flavor(flavor_notes={'Sour': 1.0}),
     colorant=Colorant(color='White', natural=True),
+    density=1.54,
 ))
 
 # Potassium Phosphate
@@ -42,6 +44,7 @@ ingredients_manager.add(Ingredient(
     ph_buffer=PHBuffer(buffering_capacity=1.0),
     flavor_profiles=Flavor(flavor_notes={'Slightly Bitter': 1.0}),
     colorant=Colorant(color='White', natural=False),
+    density=1.22,
 ))
 
 # Sodium Bicarbonate
@@ -56,6 +59,7 @@ ingredients_manager.add(Ingredient(
     ph_buffer=PHBuffer(buffering_capacity=0.7),
     flavor_profiles=Flavor(flavor_notes={'Slightly Salty': 1.0}),
     colorant=Colorant(color='White', natural=True),
+    density=2.17,
 ))
 
 # Calcium Carbonate
@@ -70,4 +74,5 @@ ingredients_manager.add(Ingredient(
     ph_buffer=PHBuffer(buffering_capacity=0.9),
     flavor_profiles=Flavor(flavor_notes={'Chalky': 1.0}),
     colorant=Colorant(color='White', natural=True),
+    density=2.71,
 ))

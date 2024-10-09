@@ -13,7 +13,7 @@ ingredients_manager.add(Ingredient(
     fat=26.5,
     carbs=3.6,
     protein=15.9,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=322.0,
     fpdf=FreezingPointDepressant(fpdf=0.0),
     flavor_profiles=Flavor(flavor_notes={'Rich': 1.0, 'Creamy': 1.0}),
@@ -24,8 +24,9 @@ ingredients_manager.add(Ingredient(
     emulsifier_props=EmulsifierProps(
         hlb_value=7.0,
         ideal_usage=0.5,
-        emulsification=1.0,  # Moved emulsification here
+        emulsification=1.0,
     ),
+    density=1.03,
 ))
 
 # Soy Lecithin
@@ -35,7 +36,7 @@ ingredients_manager.add(Ingredient(
     fat=100.0,
     carbs=0.0,
     protein=0.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=884.0,
     flavor_profiles=Flavor(flavor_notes={'Mild': 1.0, 'Nutty': 0.5}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=1.2),
@@ -44,8 +45,9 @@ ingredients_manager.add(Ingredient(
     emulsifier_props=EmulsifierProps(
         hlb_value=8.0,
         ideal_usage=0.3,
-        emulsification=0.9,  # Added emulsification value
+        emulsification=0.9,
     ),
+    density=0.92,
 ))
 
 # Polysorbate 80
@@ -60,9 +62,10 @@ ingredients_manager.add(Ingredient(
         hlb_value=15.0,
         ideal_usage=0.02,
         source='Synthetic',
-        emulsification=1.0,  # Moved emulsification here
+        emulsification=1.0,
         interactions=[],
     ),
+    density=0.92,
 ))
 
 # Mono and Diglycerides
@@ -70,7 +73,7 @@ ingredients_manager.add(Ingredient(
     name='Mono and Diglycerides',
     category=['Emulsifier'],
     fat=100.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     flavor_profiles=Flavor(flavor_notes=['Neutral']),
     viscosity_modifier=ViscosityModifier(viscosity_effect=1.1),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.9),
@@ -78,10 +81,11 @@ ingredients_manager.add(Ingredient(
     emulsifier_props=EmulsifierProps(
         hlb_value=3.8,
         ideal_usage=0.2,
-        emulsification=0.85,  # Moved emulsification here
+        emulsification=0.85,
         source='Synthetic',
         interactions=[],
     ),
+    density=0.92,
 ))
 
 # Polyglycerol Polyricinoleate
@@ -89,7 +93,7 @@ ingredients_manager.add(Ingredient(
     name='Polyglycerol Polyricinoleate',
     category=['Emulsifier'],
     fat=100.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     flavor_profiles=Flavor(flavor_notes=['Neutral']),
     viscosity_modifier=ViscosityModifier(viscosity_effect=1.0),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.95),
@@ -97,10 +101,11 @@ ingredients_manager.add(Ingredient(
     emulsifier_props=EmulsifierProps(
         hlb_value=1.5,
         ideal_usage=0.03,
-        emulsification=1.0,  # Moved emulsification here
+        emulsification=1.0,
         source='Synthetic',
         interactions=[],
     ),
+    density=0.92,
 ))
 
 # Sorbitan Monostearate
@@ -109,7 +114,7 @@ ingredients_manager.add(Ingredient(
     category=['Emulsifier'],
     fat=95.0,
     carbs=5.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     flavor_profiles=Flavor(flavor_notes=['Neutral']),
     viscosity_modifier=ViscosityModifier(viscosity_effect=1.1),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.9),
@@ -117,10 +122,11 @@ ingredients_manager.add(Ingredient(
     emulsifier_props=EmulsifierProps(
         hlb_value=4.7,
         ideal_usage=0.5,
-        emulsification=0.85,  # Moved emulsification here
+        emulsification=0.85,
         source='Synthetic',
         interactions=[],
     ),
+    density=0.92,
 ))
 
 # Sodium Stearoyl Lactylate
@@ -128,7 +134,7 @@ ingredients_manager.add(Ingredient(
     name='Sodium Stearoyl Lactylate',
     category=['Emulsifier'],
     fat=100.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     flavor_profiles=Flavor(flavor_notes=['Slightly Creamy']),
     viscosity_modifier=ViscosityModifier(viscosity_effect=1.2),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.92),
@@ -136,10 +142,11 @@ ingredients_manager.add(Ingredient(
     emulsifier_props=EmulsifierProps(
         hlb_value=21.0,
         ideal_usage=0.4,
-        emulsification=0.9,  # Moved emulsification here
+        emulsification=0.9,
         source='Synthetic',
         interactions=[],
     ),
+    density=0.92,
 ))
 
 # Sunflower Lecithin
@@ -147,7 +154,7 @@ ingredients_manager.add(Ingredient(
     name='Sunflower Lecithin',
     category=['Emulsifier'],
     fat=100.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     flavor_profiles=Flavor(flavor_notes=['Mild', 'Nutty']),
     viscosity_modifier=ViscosityModifier(viscosity_effect=1.2),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.95),
@@ -155,10 +162,11 @@ ingredients_manager.add(Ingredient(
     emulsifier_props=EmulsifierProps(
         hlb_value=8.0,
         ideal_usage=0.3,
-        emulsification=0.8,  # Added emulsification value
+        emulsification=0.8,
         source='Plant-based',
         interactions=[],
     ),
+    density=0.92,
 ))
 
 # Enzymatically Modified Lecithin
@@ -167,7 +175,7 @@ ingredients_manager.add(Ingredient(
     category=['Emulsifier'],
     fat=99.0,
     carbs=1.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     flavor_profiles=Flavor(flavor_notes=['Neutral']),
     viscosity_modifier=ViscosityModifier(viscosity_effect=1.3),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.9),
@@ -175,8 +183,9 @@ ingredients_manager.add(Ingredient(
     emulsifier_props=EmulsifierProps(
         hlb_value=11.0,
         ideal_usage=0.3,
-        emulsification=0.95,  # Added emulsification value
+        emulsification=0.95,
         source='Plant-based',
         interactions=[],
     ),
+    density=0.92,
 ))

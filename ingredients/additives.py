@@ -19,6 +19,7 @@ ingredients_manager.add(Ingredient(
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.7),
     flavor_profiles=Flavor(flavor_notes={'Slightly Sweet': 1.0}),
     colorant=Colorant(color='Colorless', natural=False),
+    density=1.04,
 ))
 
 # Glycerol (Glycerin)

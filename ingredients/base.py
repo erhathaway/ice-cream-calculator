@@ -84,6 +84,7 @@ class RheologicalProperties:
 class Ingredient:
     name: str
     category: List[str]
+    density: float = 0.0  # Density in g/ml, required for volume to weight conversion
     fat: float = 0.0        # in grams per 100g
     carbs: float = 0.0      # in grams per 100g
     protein: float = 0.0    # in grams per 100g
@@ -134,7 +135,6 @@ class Ingredient:
 
     rheological_properties: Optional[RheologicalProperties] = None
 
-    density: Optional[float] = None  # Density in g/ml, required for volume to weight conversion
 
 # Class to manage a collection of ingredients
 class Ingredients:

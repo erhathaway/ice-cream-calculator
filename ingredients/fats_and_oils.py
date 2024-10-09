@@ -12,11 +12,11 @@ ingredients_manager.add(Ingredient(
     fat=100.0,
     carbs=0.0,
     protein=0.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=884.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=0.8),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.9),
     colorant=Colorant(color='Light Yellow', natural=True),
-    # Removed emulsification field since it's not needed
+    density=0.92,  # Density in g/ml
 ))

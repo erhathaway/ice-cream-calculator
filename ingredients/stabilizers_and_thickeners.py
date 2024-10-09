@@ -12,7 +12,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=80.0,
     protein=5.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=200.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=10.0),
@@ -25,6 +25,7 @@ ingredients_manager.add(Ingredient(
         cold_soluble=True,
         interactions=['Locust Bean Gum', 'Xanthan Gum'],
     ),
+    density=0.8,
 ))
 
 # Carrageenan
@@ -34,7 +35,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=80.0,
     protein=2.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=200.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=10.0),
@@ -46,6 +47,7 @@ ingredients_manager.add(Ingredient(
         cold_soluble=False,
         interactions=['Locust Bean Gum'],
     ),
+    density=0.8,
 ))
 
 # Locust Bean Gum
@@ -55,7 +57,7 @@ ingredients_manager.add(Ingredient(
     fat=1.0,
     carbs=80.0,
     protein=5.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=200.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=12.0),
@@ -67,6 +69,7 @@ ingredients_manager.add(Ingredient(
         cold_soluble=False,
         interactions=['Guar Gum', 'Carrageenan'],
     ),
+    density=0.8,
 ))
 
 # Xanthan Gum
@@ -76,7 +79,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=78.0,
     protein=7.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=200.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=18.0),
@@ -89,6 +92,7 @@ ingredients_manager.add(Ingredient(
         cold_soluble=True,
         interactions=['Guar Gum', 'Locust Bean Gum'],
     ),
+    density=0.8,
 ))
 
 # Agar Agar
@@ -98,7 +102,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=80.0,
     protein=2.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=208.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=20.0),
@@ -111,6 +115,7 @@ ingredients_manager.add(Ingredient(
         cold_soluble=False,
         interactions=['Pectin'],
     ),
+    density=0.8,
 ))
 
 # Pectin
@@ -120,7 +125,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=90.0,
     protein=0.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=240.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=15.0),
@@ -133,6 +138,7 @@ ingredients_manager.add(Ingredient(
         cold_soluble=False,
         interactions=['Sugar', 'Acid'],
     ),
+    density=0.8,
 ))
 
 # Gelatin
@@ -142,7 +148,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=0.0,
     protein=85.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=340.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=25.0),
@@ -155,6 +161,7 @@ ingredients_manager.add(Ingredient(
         cold_soluble=False,
         interactions=['Sugar'],
     ),
+    density=0.8,
 ))
 
 # Konjac Gum
@@ -164,7 +171,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=80.0,
     protein=2.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=200.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=22.0),
@@ -177,6 +184,7 @@ ingredients_manager.add(Ingredient(
         cold_soluble=True,
         interactions=['Carrageenan', 'Xanthan Gum'],
     ),
+    density=0.8,
 ))
 
 # Tara Gum
@@ -186,7 +194,7 @@ ingredients_manager.add(Ingredient(
     fat=0.0,
     carbs=80.0,
     protein=5.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=200.0,
     flavor_profiles=Flavor(flavor_notes={'Neutral': 1.0}),
     viscosity_modifier=ViscosityModifier(viscosity_effect=17.0),
@@ -199,4 +207,5 @@ ingredients_manager.add(Ingredient(
         cold_soluble=False,
         interactions=['Guar Gum', 'Locust Bean Gum'],
     ),
+    density=0.8,
 ))

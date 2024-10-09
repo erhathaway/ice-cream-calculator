@@ -9,8 +9,9 @@ ingredients_manager.add(Ingredient(
     fat=1.0,
     carbs=3.5,
     protein=90.0,
-    weight=0.0,  # Adjust as needed
+    weight=0.0,
     calories=360.0,
     flavor_profiles=Flavor(flavor_notes={'Milky': 1.0}),
     colorant=Colorant(color='White', natural=True),
+    density=0.33,
 ))
