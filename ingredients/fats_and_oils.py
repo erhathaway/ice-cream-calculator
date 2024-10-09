@@ -18,4 +18,5 @@ ingredients_manager.add(Ingredient(
     viscosity_modifier=ViscosityModifier(viscosity_effect=0.8),
     melting_rate_modifier=MeltingRateModifier(melting_rate_effect=0.9),
     colorant=Colorant(color='Light Yellow', natural=True),
+    # Removed emulsification field since it's not needed
 ))

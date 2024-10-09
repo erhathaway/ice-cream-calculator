@@ -1,4 +1,4 @@
-from .base import ingredients_manager, Ingredient, Flavor, Colorant, PHModifier
+from .base import ingredients_manager, Ingredient, Flavor, Colorant, PHModifier, EmulsifierProps
 
 # Flavorings
 
@@ -26,6 +26,9 @@ ingredients_manager.add(Ingredient(
     calories=228.0,
     flavor_profiles=Flavor(flavor_notes={'Chocolate': 1.0, 'Bitter': 0.5}),
     colorant=Colorant(color='Dark Brown', natural=True),
+    emulsifier_props=EmulsifierProps(
+        emulsification=0.1,  # Moved emulsification here
+    ),
 ))
 
 # Tangerine Zest

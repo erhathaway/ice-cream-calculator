@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Dict, Union
 
-from recipe import Recipe
+from recipes import Recipe
 from ingredients import Ingredient
 from constraints import Constraints
 
@@ -48,7 +48,12 @@ class IceCreamRecipe(Recipe):
 
         for constraint in self.constraints.constraints:
             if constraint.property in totals:
-                value = totals[constraint.property] / totals['total_weight'] * 100
+                if totals['total_weight'] == 0:
+                    # Handle the zero total weight case
+                    value = 0  # or consider raising an exception
+                else:
+                    value = totals[constraint.property] / totals['total_weight'] * 100
+
                 validations[f"{constraint.name}_within_range"] = constraint.min_value <= value <= constraint.max_value
                 validations[f"{constraint.name}_value"] = value
 

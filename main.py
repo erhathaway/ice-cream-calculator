@@ -16,7 +16,7 @@ ice_cream_recipe.constraints = constraints
 
 # Retrieve ingredients by name
 coconut_milk = ingredients_manager.get_ingredient_by_name('Coconut Milk')
-sugar = ingredients_manager.get_ingredient_by_name('Sugar')
+sugar = ingredients_manager.get_ingredient_by_name('White Sugar')
 oil = ingredients_manager.get_ingredient_by_name('Vegetable Oil')
 water = ingredients_manager.get_ingredient_by_name('Water')
 xanthan_gum = ingredients_manager.get_ingredient_by_name('Xanthan Gum')
@@ -24,14 +24,19 @@ locust_bean_gum = ingredients_manager.get_ingredient_by_name('Locust Bean Gum')
 
 # Add ingredients to the recipe
 for ingredient in [coconut_milk, sugar, oil, water, xanthan_gum, locust_bean_gum]:
-    ice_cream_recipe.add_ingredient(ingredient)
+    if ingredient is not None:
+        ice_cream_recipe.add_ingredient(ingredient)
+    else:
+        print(f"Ingredient not found: {ingredient}")    
 
+print("\nIngredients:")
+print([ing.name for ing in ice_cream_recipe.ingredients])
 # Adjust ingredient weights to match total desired weight
 ice_cream_recipe.adjust_ingredient_weights()
 
 # Calculate totals
 totals = ice_cream_recipe.calculate_totals()
-print("Totals:")
+print("\nTotals:")
 for key, value in totals.items():
     print(f"{key}: {value:.2f}")
 

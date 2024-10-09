@@ -51,8 +51,11 @@ class SweetenerProps(IngredientAttribute):
 
 @dataclass
 class EmulsifierProps(IngredientAttribute):
-    hld_value: float = 0.0
+    hlb_value: float = 0.0
     ideal_usage: float = 0.0
+    source: str = ''
+    interactions: List[str] = field(default_factory=list)
+    emulsification: float = 0.0  # Added emulsification field here
 
 @dataclass
 class PhysicalChemicalProperties:
@@ -80,18 +83,15 @@ class RheologicalProperties:
 class Ingredient:
     name: str
     category: List[str]
-    fat: float            # in grams
-    carbs: float          # in grams
-    protein: float        # in grams
-    weight: float         # in grams
+    fat: float   = 0.0         # in grams
+    carbs: float = 0.0          # in grams
+    protein: float = 0.0        # in grams
+    weight: float = 0.0         # in grams
     calories: float = 0.0 # in kcal
     fiber: float = 0.0    # in grams
     vitamins: Dict[str, float] = field(default_factory=dict) # {'Vitamin C': 60.0}
     minerals: Dict[str, float] = field(default_factory=dict) # {'Calcium': 100.0}
     sweetness: float = 0.0
-    gum_agent_props: Optional[GumAgentProps] = None
-    sweetener_props: Optional[SweetenerProps] = None
-    emulsifier_props: Optional[EmulsifierProps] = None
 
     # Functional properties
     fpdf: Optional[FreezingPointDepressant] = None
@@ -114,7 +114,7 @@ class Ingredient:
     physical_chemical_properties: Optional[PhysicalChemicalProperties] = None
 
     # New property
-    allergens: List[str] = field(default_factory=list)  # e.g., ['Gluten', 'Nuts']
+    allergens: List[str] = field(default_factory=list)
 
     # New property
     interactions: List[IngredientInteraction] = field(default_factory=list)
@@ -147,7 +147,8 @@ class Ingredients:
     def group_by_category(self) -> dict:
         groups = {}
         for ingredient in self.ingredients:
-            groups.setdefault(ingredient.category, []).append(ingredient)
+            for category in ingredient.category:
+                groups.setdefault(category, []).append(ingredient)
         return groups
 
     def sort_by_property(self, property_name: str, reverse: bool = False) -> List[Ingredient]:
@@ -230,6 +231,13 @@ class Ingredients:
         if total_weight == 0:
             return 0.0
         return total_viscosity / total_weight
+
+    def get_ingredient_by_name(self, name: str) -> Optional[Ingredient]:
+        for ingredient in self.ingredients:
+            if ingredient.name == name:
+                return ingredient
+        raise ValueError(f"Ingredient {name} not found")
+        return None
 
 # Initialize Ingredients manager
 ingredients_manager = Ingredients()

@@ -26,6 +26,8 @@ class Recipe:
 
     def adjust_ingredient_weights(self):
         total_current_weight = sum(ing.weight for ing in self.ingredients)
+        if total_current_weight == 0:
+            return
         scaling_factor = self.total_weight / total_current_weight
         for ing in self.ingredients:
             ing.weight *= scaling_factor
